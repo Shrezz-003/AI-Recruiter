@@ -1,0 +1,29 @@
+{
+  "Programming Languages": [
+    "Python", "JavaScript", "Java", "C++", "C#", "Go", "Ruby", "PHP", "TypeScript", "Swift", "Kotlin", "Rust", "Scala", "Perl"
+  ],
+  "Frontend Frameworks & Libraries": [
+    "React", "Angular", "Vue.js", "Svelte", "jQuery", "Next.js", "Nuxt.js", "Gatsby", "Ember.js", "Backbone.js", "Redux", "MobX"
+  ],
+  "Backend Frameworks & Libraries": [
+    "Node.js", "Express.js", "Django", "Flask", "FastAPI", "Ruby on Rails", "ASP.NET", "Spring Boot", "Laravel", "Koa", "Phoenix"
+  ],
+  "Mobile Development": [
+    "React Native", "Flutter", "Swift (iOS)", "Kotlin (Android)", "Xamarin", "Ionic", "NativeScript"
+  ],
+  "Databases & Data Storage": [
+    "SQL", "MySQL", "PostgreSQL", "Microsoft SQL Server", "Oracle", "SQLite", "NoSQL", "MongoDB", "Redis", "Cassandra", "DynamoDB", "Firebase", "Elasticsearch"
+  ],
+  "Cloud & DevOps": [
+    "AWS", "Amazon Web Services", "Azure", "Google Cloud Platform", "GCP", "Docker", "Kubernetes", "Terraform", "Ansible", "Jenkins", "GitLab CI", "CircleCI", "GitHub Actions", "Serverless", "AWS Lambda", "Azure Functions", "Google Cloud Functions"
+  ],
+  "Data Science & Machine Learning": [
+    "Machine Learning", "Deep Learning", "Natural Language Processing", "NLP", "Computer Vision", "Data Analysis", "Pandas", "NumPy", "Scikit-learn", "TensorFlow", "PyTorch", "Keras", "Jupyter", "Apache Spark", "Hadoop"
+  ],
+  "Software & Tools": [
+    "Git", "GitHub", "GitLab", "Bitbucket", "Jira", "Confluence", "Trello", "Slack", "Figma", "Sketch", "Adobe XD", "Postman", "Swagger"
+  ],
+  "Operating Systems": [
+    "Linux", "Ubuntu", "CentOS", "Windows Server", "macOS"
+  ]
+}
