@@ -24,4 +24,3 @@ python-multipart
 pypdf
 python-docx
 spacy
-abc
