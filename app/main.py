@@ -1,6 +1,6 @@
 # File: app/main.py
 from fastapi import FastAPI
-
+from app.api import jobs # Import the new jobs router
 app = FastAPI(title="AI Recruitment Assistant API")
 
 @app.get("/")
@@ -14,6 +14,8 @@ from app.api import candidates # Import the candidates router
 app = FastAPI(title="AI Recruitment Assistant API")
 
 app.include_router(candidates.router, tags=["Candidates"]) # Include the router
+
+app.include_router(jobs.router, tags=["Jobs"]) # Add the new router
 
 @app.get("/")
 def read_root():
