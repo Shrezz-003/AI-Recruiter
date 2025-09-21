@@ -1,15 +1,16 @@
 # File: app/main.py
 from fastapi import FastAPI
 from app.api import jobs # Import the new jobs router
-app = FastAPI(title="AI Recruitment Assistant API")
+from dotenv import load_dotenv
+from fastapi import FastAPI
+from app.api import candidates # Import the candidates router
 
+load_dotenv() 
+
+app = FastAPI(title="AI Recruitment Assistant API")
 @app.get("/")
 def read_root():
     return {"status": "API is running!"}
-
-# File: app/main.py
-from fastapi import FastAPI
-from app.api import candidates # Import the candidates router
 
 app = FastAPI(title="AI Recruitment Assistant API")
 

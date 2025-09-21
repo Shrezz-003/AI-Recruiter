@@ -27,3 +27,5 @@ spacy
 torch
 sentence-transformers
 torch
+pinecone-client
+google-generativeai
