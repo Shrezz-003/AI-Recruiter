@@ -1,29 +1,110 @@
 {
-  "Programming Languages": [
-    "Python", "JavaScript", "Java", "C++", "C#", "Go", "Ruby", "PHP", "TypeScript", "Swift", "Kotlin", "Rust", "Scala", "Perl"
+  "Programming Languages & Paradigms": [
+    "Python", "JavaScript", "TypeScript", "Java", "C#", "C++", "Go", "Ruby", "PHP", "Swift", "Kotlin", "Rust", "Scala", "Dart", "R", "MATLAB", "Perl", "Lua", "Haskell", "Groovy", "Bash", "Shell Scripting", "PowerShell", "SQL", "Object-Oriented Programming (OOP)", "Functional Programming (FP)"
   ],
-  "Frontend Frameworks & Libraries": [
-    "React", "Angular", "Vue.js", "Svelte", "jQuery", "Next.js", "Nuxt.js", "Gatsby", "Ember.js", "Backbone.js", "Redux", "MobX"
+  "Web Development: Frontend": [
+    "HTML5", "CSS3", "React", "Angular", "Vue.js", "Svelte", "Next.js", "Nuxt.js", "Gatsby", "jQuery", "Redux", "Redux Toolkit", "MobX", "Zustand", "Pinia", "NgRx", "Webpack", "Vite", "Rollup", "Parcel", "SASS", "LESS", "Tailwind CSS", "Bootstrap", "Material-UI", "Styled-Components", "D3.js", "Three.js", "WebGL", "WebSockets", "WebRTC", "Progressive Web Apps (PWA)", "DOM Manipulation"
   ],
-  "Backend Frameworks & Libraries": [
-    "Node.js", "Express.js", "Django", "Flask", "FastAPI", "Ruby on Rails", "ASP.NET", "Spring Boot", "Laravel", "Koa", "Phoenix"
+  "Web Development: Backend": [
+    "Node.js", "Express.js", "NestJS", "Koa", "Deno", "Bun", "Django", "Flask", "FastAPI", "Ruby on Rails", "ASP.NET", ".NET Core", "Spring Boot", "Laravel", "Symfony", "Phoenix (Elixir)", "Gin (Go)", "Fiber (Go)", "RESTful APIs", "GraphQL", "gRPC", "Microservices Architecture", "Serverless Architecture", "API Gateway", "Authentication", "OAuth", "JWT"
   ],
-  "Mobile Development": [
-    "React Native", "Flutter", "Swift (iOS)", "Kotlin (Android)", "Xamarin", "Ionic", "NativeScript"
+  "Mobile App Development": [
+    "React Native", "Flutter", "Swift", "SwiftUI", "UIKit", "Kotlin", "Java (Android)", "Jetpack Compose", "Xamarin", "Ionic", "NativeScript", "Xcode", "Android Studio"
   ],
-  "Databases & Data Storage": [
-    "SQL", "MySQL", "PostgreSQL", "Microsoft SQL Server", "Oracle", "SQLite", "NoSQL", "MongoDB", "Redis", "Cassandra", "DynamoDB", "Firebase", "Elasticsearch"
+  "Databases: Relational & ORMs": [
+    "PostgreSQL", "MySQL", "Microsoft SQL Server", "Oracle", "MariaDB", "SQLite", "CockroachDB", "Amazon Aurora", "SQLAlchemy", "Hibernate", "Entity Framework", "Prisma", "Sequelize", "TypeORM", "Database Design", "Normalization"
   ],
-  "Cloud & DevOps": [
-    "AWS", "Amazon Web Services", "Azure", "Google Cloud Platform", "GCP", "Docker", "Kubernetes", "Terraform", "Ansible", "Jenkins", "GitLab CI", "CircleCI", "GitHub Actions", "Serverless", "AWS Lambda", "Azure Functions", "Google Cloud Functions"
+  "Databases: NoSQL & Specialized": [
+    "MongoDB", "Redis", "Cassandra", "DynamoDB", "Elasticsearch", "OpenSearch", "Solr", "Couchbase", "Firebase Realtime Database", "Firestore", "Neo4j", "Amazon Neptune", "InfluxDB", "Prometheus", "Data Warehousing"
+  ],
+  "Cloud Platforms: AWS": [
+    "AWS", "Amazon Web Services", "EC2", "S3", "Lambda", "RDS", "DynamoDB", "VPC", "IAM", "CloudFormation", "Terraform", "EKS", "ECS", "SQS", "SNS", "CloudWatch", "Route 53", "API Gateway", "AWS Glue", "Redshift"
+  ],
+  "Cloud Platforms: Azure": [
+    "Azure", "Microsoft Azure", "Azure Virtual Machines", "Blob Storage", "Azure Functions", "Azure SQL Database", "Cosmos DB", "Azure Virtual Network", "Azure Active Directory", "ARM Templates", "Azure Kubernetes Service (AKS)", "Azure DevOps", "Logic Apps"
+  ],
+  "Cloud Platforms: GCP": [
+    "GCP", "Google Cloud Platform", "Compute Engine", "Cloud Storage", "Cloud Functions", "Cloud SQL", "BigQuery", "Google Kubernetes Engine (GKE)", "VPC Network", "Cloud IAM", "Pub/Sub", "Cloud Run", "Dataflow"
+  ],
+  "DevOps & Infrastructure": [
+    "Docker", "Kubernetes", "Terraform", "Ansible", "Pulumi", "Chef", "Puppet", "Jenkins", "GitLab CI/CD", "GitHub Actions", "CircleCI", "Travis CI", "Argo CD", "Flux", "Helm", "Prometheus", "Grafana", "Datadog", "New Relic", "Splunk", "ELK Stack", "Infrastructure as Code (IaC)", "CI/CD", "Site Reliability Engineering (SRE)"
   ],
   "Data Science & Machine Learning": [
-    "Machine Learning", "Deep Learning", "Natural Language Processing", "NLP", "Computer Vision", "Data Analysis", "Pandas", "NumPy", "Scikit-learn", "TensorFlow", "PyTorch", "Keras", "Jupyter", "Apache Spark", "Hadoop"
+    "Machine Learning", "Deep Learning", "Natural Language Processing (NLP)", "Computer Vision", "Data Analysis", "Pandas", "NumPy", "Scikit-learn", "TensorFlow", "PyTorch", "Keras", "XGBoost", "LightGBM", "spaCy", "NLTK", "OpenCV", "Jupyter Notebooks", "Apache Spark", "Hadoop", "MLOps", "Model Deployment", "Feature Engineering", "A/B Testing"
   ],
-  "Software & Tools": [
-    "Git", "GitHub", "GitLab", "Bitbucket", "Jira", "Confluence", "Trello", "Slack", "Figma", "Sketch", "Adobe XD", "Postman", "Swagger"
+  "Business Intelligence & Data Engineering": [
+    "ETL", "Data Pipelines", "Apache Airflow", "Luigi", "Tableau", "Power BI", "Looker", "dbt", "Snowflake", "BigQuery", "Redshift", "Data Modeling", "Data Warehousing"
   ],
-  "Operating Systems": [
-    "Linux", "Ubuntu", "CentOS", "Windows Server", "macOS"
+  "Cybersecurity": [
+    "Network Security", "Application Security", "Penetration Testing", "Ethical Hacking", "Cryptography", "SIEM", "Incident Response", "OWASP Top 10", "Nmap", "Wireshark", "Metasploit", "Burp Suite", "IAM (Identity & Access Management)"
+  ],
+  "Software, Tools & Methodologies": [
+    "Git", "GitHub", "GitLab", "Bitbucket", "Jira", "Confluence", "Trello", "Asana", "Slack", "Postman", "Swagger", "OpenAPI", "Agile", "Scrum", "Kanban", "Lean", "Test-Driven Development (TDD)", "Behavior-Driven Development (BDD)"
+  ],
+  "UI/UX Design & Tools": [
+    "UI Design", "UX Design", "User Research", "Wireframing", "Prototyping", "Figma", "Sketch", "Adobe XD", "InVision", "Design Systems"
+  ],
+  "Game Development": [
+    "Unity", "Unreal Engine", "C++ (Game Dev)", "C# (Game Dev)", "Game Physics", "3D Modeling", "Blender", "Maya", "Shaders"
+  ],
+  "Operating Systems & Networking": [
+    "Linux", "Ubuntu", "CentOS", "Red Hat (RHEL)", "Windows Server", "macOS", "TCP/IP", "DNS", "HTTP/HTTPS", "Load Balancing"
+  ],
+
+
+
+  "Technology & IT": [
+    "Software Developer", "Cloud Architect", "DevOps Engineer", "Cybersecurity Specialist", "Database Administrator (DBA)", "Network Engineer", "IT Support Specialist", "Systems Administrator", "Python", "Java", "AWS", "Azure", "Kubernetes", "Docker", "SQL", "Linux", "Cisco", "Palo Alto Networks", "Active Directory", "ITIL"
+  ],
+  "Web & Mobile Development": [
+    "Frontend Developer", "Backend Developer", "Full Stack Developer", "Mobile Developer (iOS/Android)", "React", "Angular", "Vue.js", "Node.js", "Django", "FastAPI", "Ruby on Rails", "Swift", "Kotlin", "HTML5", "CSS3", "JavaScript", "TypeScript", "RESTful APIs", "GraphQL"
+  ],
+  "Data & AI": [
+    "Data Scientist", "Data Analyst", "Machine Learning Engineer", "Data Engineer", "AI Researcher", "Business Intelligence Developer", "Python", "R", "SQL", "Pandas", "TensorFlow", "PyTorch", "Scikit-learn", "Apache Spark", "Hadoop", "Tableau", "Power BI", "ETL", "Data Warehousing"
+  ],
+  "Product, Project & Program Management": [
+    "Product Manager", "Project Manager", "Program Manager", "Scrum Master", "Agile Coach", "Technical Program Manager", "Agile", "Scrum", "Kanban", "Jira", "Confluence", "Asana", "Product Roadmap", "User Stories", "Stakeholder Management", "Gantt Charts", "PMP", "PRINCE2"
+  ],
+  "Design & Creative": [
+    "UI/UX Designer", "Product Designer", "Graphic Designer", "Animator", "Video Editor", "Content Creator", "Creative Director", "Figma", "Sketch", "Adobe Creative Suite (Photoshop, Illustrator, Premiere Pro, After Effects)", "Blender", "Cinema 4D", "User Research", "Prototyping", "Typography", "Brand Identity"
+  ],
+  "Marketing & Communications": [
+    "Digital Marketing Manager", "SEO Specialist", "Content Strategist", "Social Media Manager", "Marketing Operations Manager", "Public Relations (PR) Specialist", "Brand Manager", "Google Analytics", "Google Ads", "HubSpot", "Marketo", "Salesforce Marketing Cloud", "SEO/SEM", "Content Management Systems (CMS)", "Copywriting", "Email Marketing"
+  ],
+  "Sales & Business Development": [
+    "Account Executive", "Sales Development Representative (SDR)", "Business Development Manager", "Sales Engineer", "Customer Success Manager", "Salesforce", "HubSpot CRM", "Zoho CRM", "Lead Generation", "Negotiation", "Client Relationship Management (CRM)", "Sales Funnel Management", "Cold Calling", "Solution Selling"
+  ],
+  "Finance & Accounting": [
+    "Accountant", "Financial Analyst", "Auditor", "Controller", "Investment Banker", "Quantitative Analyst", "QuickBooks", "SAP", "Oracle Financials", "Excel", "Financial Modeling", "Generally Accepted Accounting Principles (GAAP)", "Sarbanes-Oxley (SOX)", "Risk Management", "VBA"
+  ],
+  "Human Resources & Talent Acquisition": [
+    "HR Manager", "Technical Recruiter", "Talent Acquisition Specialist", "HR Business Partner (HRBP)", "Compensation Analyst", "Workday", "SAP SuccessFactors", "Greenhouse", "Lever", "Applicant Tracking Systems (ATS)", "Onboarding", "Employee Relations", "Performance Management"
+  ],
+  "Healthcare & Life Sciences": [
+    "Nurse", "Medical Doctor", "Pharmacist", "Lab Technician", "Bioinformatician", "Clinical Research Associate", "Healthcare Administrator", "Epic Systems", "Cerner", "HL7", "FHIR", "HIPAA", "Medical Terminology", "Biostatistics", "Genomics", "Clinical Trials"
+  ],
+  "Engineering (Industrial & Civil)": [
+    "Mechanical Engineer", "Electrical Engineer", "Civil Engineer", "Chemical Engineer", "Industrial Engineer", "AutoCAD", "SolidWorks", "CATIA", "MATLAB", "LabVIEW", "Finite Element Analysis (FEA)", "Six Sigma", "Lean Manufacturing", "PLC Programming", "Thermodynamics"
+  ],
+  "Architecture & Real Estate": [
+    "Architect", "Urban Planner", "Interior Designer", "Real Estate Agent", "Construction Manager", "Revit", "AutoCAD Architecture", "SketchUp", "Building Information Modeling (BIM)", "Construction Management", "Real Estate Law", "Property Management"
+  ],
+  "Legal & Compliance": [
+    "Lawyer", "Paralegal", "Compliance Officer", "Contract Manager", "Legal Counsel", "LexisNexis", "Westlaw", "Contract Law", "Corporate Law", "Litigation", "eDiscovery", "GDPR", "Regulatory Affairs"
+  ],
+  "Education & Training": [
+    "Teacher", "Professor", "Instructional Designer", "Corporate Trainer", "Curriculum Developer", "Learning Management Systems (LMS)", "Canvas", "Blackboard", "Moodle", "Articulate Storyline", "ADDIE Model", "Pedagogy", "Andragogy"
+  ],
+  "Supply Chain & Logistics": [
+    "Supply Chain Manager", "Logistics Coordinator", "Procurement Specialist", "Warehouse Manager", "SAP SCM", "Oracle SCM", "Inventory Management", "Logistics Management", "Freight Forwarding", "Procurement", "ERP Systems"
+  ],
+  "Hospitality & Culinary Arts": [
+    "Hotel Manager", "Chef", "Restaurant Manager", "Event Planner", "Food and Beverage Director", "Point of Sale (POS) Systems", "Hospitality Management", "Culinary Arts", "Menu Planning", "Event Coordination", "Customer Service"
+  ],
+  "Media & Writing": [
+    "Journalist", "Author", "Technical Writer", "Copywriter", "Editor", "Screenwriter", "AP Style", "Chicago Manual of Style", "SEO Copywriting", "Content Strategy", "Final Draft", "Adobe InDesign"
+  ],
+  "Skilled Trades": [
+    "Electrician", "Plumber", "HVAC Technician", "Welder", "Carpenter", "Auto Mechanic", "National Electrical Code (NEC)", "Welding Certifications (AWS)", "HVAC Certification (EPA 608)", "Automotive Service Excellence (ASE)", "Blueprint Reading"
   ]
 }
