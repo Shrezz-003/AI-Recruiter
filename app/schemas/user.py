@@ -1,15 +1,16 @@
 from pydantic import BaseModel, EmailStr
 from app.models.user import UserRole
 
-class UserCreate(BaseModel):
+class UserBase(BaseModel):
     email: EmailStr
+
+class UserCreate(UserBase):
     password: str
     role: UserRole
 
-class UserLogin(BaseModel):
-    email: EmailStr
-    password: str
+class User(UserBase):
+    id: int
+    role: UserRole
 
-class Token(BaseModel):
-    access_token: str
-    token_type: str
+    class Config:
+        from_attributes = True

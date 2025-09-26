@@ -1,77 +1,97 @@
-from fastapi import APIRouter, UploadFile, File, Form, HTTPException, status
+from fastapi import APIRouter, UploadFile, File, Form, HTTPException, status, Depends
 from fastapi.responses import StreamingResponse
 from typing import List
-from app.services import text_extractor, resume_parser, matching_service, question_generator, pdf_generator
+from app.services import text_extractor, pdf_generator, ai_recruiter_service
+from app.api import deps
+from app.models.user import User
 import re
 
 router = APIRouter()
 
 
-# This is your existing endpoint for sorting
 @router.post("/sort-resumes")
 async def sort_resumes(
         job_description_str: str = Form(...),
-        resumes: List[UploadFile] = File(...)
+        resumes: List[UploadFile] = File(...),
+        current_user: User = Depends(deps.get_current_user)
 ):
-    if len(resumes) < 10:
+    if len(resumes) < 1:  # Reduced for easier testing, can be increased later
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
-            detail="Minimum of 10 resumes must be uploaded."
+            detail="At least one resume must be uploaded."
         )
 
-    jd_skills = resume_parser.extract_skills(job_description_str)
-    sorted_candidates = []
+    analyzed_candidates = []
 
     for resume_file in resumes:
         raw_text = text_extractor.extract_text(resume_file)
         if not raw_text:
             continue
 
-        resume_skills = resume_parser.extract_skills(raw_text)
-        score = matching_service.calculate_fit_score(resume_skills, jd_skills)
+        # --- UPGRADE: Use the new intelligent service for analysis ---
+        analysis = ai_recruiter_service.get_ai_match_analysis(
+            job_description=job_description_str,
+            resume_text=raw_text
+        )
 
+        # A simple regex to find emails for contact purposes
         email_match = re.search(r'[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}', raw_text)
         email = email_match.group(0) if email_match else "Not found"
 
-        sorted_candidates.append({
+        candidate_profile = {
             "filename": resume_file.filename,
             "email": email,
-            "fit_score_percent": score
-        })
+            "analysis": analysis  # Store the entire rich analysis object
+        }
+        analyzed_candidates.append(candidate_profile)
 
-    sorted_candidates.sort(key=lambda x: x['fit_score_percent'], reverse=True)
-    return {"sorted_candidates": sorted_candidates}
+    # Sort candidates in descending order based on the AI's fit score
+    analyzed_candidates.sort(key=lambda x: x['analysis'].get('fit_score_percent', 0), reverse=True)
+
+    return {"sorted_candidates": analyzed_candidates}
 
 
-# --- NEW ENDPOINTS FOR INTERVIEW KIT ---
-
+# --- UPGRADE: Interview Kit now uses the AI analysis ---
 def get_interview_kit_data(candidate_id: int):
-    """Helper function to generate mock data. In a real app, this would fetch
-    data from your database for a specific candidate and job."""
+    # This is mock data. In a real app, you'd fetch a saved analysis from the DB.
+    mock_analysis = {
+        "fit_score_percent": 92,
+        "skills_analysis": [
+            {"skill": "Python", "possessed": "Yes"},
+            {"skill": "FastAPI", "possessed": "Yes"},
+            {"skill": "AWS", "possessed": "Partial"}
+        ],
+        "strengths": [
+            "Extensive experience with Python and building scalable APIs.",
+            "Demonstrated ability to work with cloud services."
+        ],
+        "weaknesses": [
+            "Lacks direct experience with Kubernetes.",
+            "Could elaborate more on database optimization techniques."
+        ],
+        "verdict": "Strongly Recommend Interview"
+    }
 
-    job_skills = ["Python", "FastAPI", "Docker", "AWS", "SQL"]
-    ai_questions_data = question_generator.generate_interview_questions(job_skills)
+    # Generate questions based on the AI's analysis of weaknesses/gaps
+    skills_to_probe = [s['skill'] for s in mock_analysis['skills_analysis'] if s['possessed'] != 'Yes']
+    ai_questions = ai_recruiter_service.question_generator.generate_interview_questions(skills_to_probe)
 
     return {
         "candidate_id": candidate_id,
         "candidate_email": f"candidate_{candidate_id}@example.com",
-        "fit_score": 85.5,
-        "matched_skills": ["Python", "FastAPI", "Docker"],
-        "missing_skills": ["AWS", "SQL"],
-        "questions": ai_questions_data.get("questions", [])
+        "analysis": mock_analysis,
+        "questions": ai_questions.get("questions", [])
     }
 
 
-# ENDPOINT 1: Get Interview Kit data as JSON for the web page
 @router.get("/interview-kit/{candidate_id}", tags=["Interview Kit"])
-def get_interview_kit_json(candidate_id: int):
+def get_interview_kit_json(candidate_id: int, current_user: User = Depends(deps.get_current_user)):
     kit_data = get_interview_kit_data(candidate_id)
     return kit_data
 
 
-# ENDPOINT 2: Generate and download the Interview Kit as a PDF
 @router.get("/interview-kit/{candidate_id}/download", tags=["Interview Kit"])
-def download_interview_kit_pdf(candidate_id: int):
+def download_interview_kit_pdf(candidate_id: int, current_user: User = Depends(deps.get_current_user)):
     kit_data = get_interview_kit_data(candidate_id)
     pdf_buffer = pdf_generator.create_interview_kit_pdf(kit_data)
 

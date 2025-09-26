@@ -92,3 +92,4 @@ PyYAML~=6.0.2
 filelock~=3.19.1
 alembic~=1.16.5
 uvicorn[standard]
+pydantic[email]
