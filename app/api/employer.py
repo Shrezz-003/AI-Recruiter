@@ -1,11 +1,13 @@
-from fastapi import APIRouter, Depends, UploadFile, File, Form, HTTPException, status
+from fastapi import APIRouter, UploadFile, File, Form, HTTPException, status
+from fastapi.responses import StreamingResponse
 from typing import List
-from app.services import text_extractor, resume_parser, matching_service, question_generator
-import json
+from app.services import text_extractor, resume_parser, matching_service, question_generator, pdf_generator
+import re
 
 router = APIRouter()
 
 
+# This is your existing endpoint for sorting
 @router.post("/sort-resumes")
 async def sort_resumes(
         job_description_str: str = Form(...),
@@ -18,7 +20,6 @@ async def sort_resumes(
         )
 
     jd_skills = resume_parser.extract_skills(job_description_str)
-
     sorted_candidates = []
 
     for resume_file in resumes:
@@ -29,9 +30,6 @@ async def sort_resumes(
         resume_skills = resume_parser.extract_skills(raw_text)
         score = matching_service.calculate_fit_score(resume_skills, jd_skills)
 
-        # A simple regex can be used to find emails, but a more robust solution
-        # would be needed for a real app.
-        import re
         email_match = re.search(r'[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}', raw_text)
         email = email_match.group(0) if email_match else "Not found"
 
@@ -41,15 +39,41 @@ async def sort_resumes(
             "fit_score_percent": score
         })
 
-    # Sort in descending order of fit score
     sorted_candidates.sort(key=lambda x: x['fit_score_percent'], reverse=True)
-
     return {"sorted_candidates": sorted_candidates}
 
 
-@router.post("/ask-questions")
-def ask_questions(job_description: str, fields: List[str]):
-    # In this context, 'fields' are interpreted as specific skills to focus on
-    # Generate questions aligned with the specified fields/skills
-    questions = question_generator.generate_interview_questions(fields)
-    return questions
+# --- NEW ENDPOINTS FOR INTERVIEW KIT ---
+
+def get_interview_kit_data(candidate_id: int):
+    """Helper function to generate mock data. In a real app, this would fetch
+    data from your database for a specific candidate and job."""
+
+    job_skills = ["Python", "FastAPI", "Docker", "AWS", "SQL"]
+    ai_questions_data = question_generator.generate_interview_questions(job_skills)
+
+    return {
+        "candidate_id": candidate_id,
+        "candidate_email": f"candidate_{candidate_id}@example.com",
+        "fit_score": 85.5,
+        "matched_skills": ["Python", "FastAPI", "Docker"],
+        "missing_skills": ["AWS", "SQL"],
+        "questions": ai_questions_data.get("questions", [])
+    }
+
+
+# ENDPOINT 1: Get Interview Kit data as JSON for the web page
+@router.get("/interview-kit/{candidate_id}", tags=["Interview Kit"])
+def get_interview_kit_json(candidate_id: int):
+    kit_data = get_interview_kit_data(candidate_id)
+    return kit_data
+
+
+# ENDPOINT 2: Generate and download the Interview Kit as a PDF
+@router.get("/interview-kit/{candidate_id}/download", tags=["Interview Kit"])
+def download_interview_kit_pdf(candidate_id: int):
+    kit_data = get_interview_kit_data(candidate_id)
+    pdf_buffer = pdf_generator.create_interview_kit_pdf(kit_data)
+
+    headers = {'Content-Disposition': f'attachment; filename="interview_kit_{candidate_id}.pdf"'}
+    return StreamingResponse(pdf_buffer, headers=headers, media_type='application/pdf')
