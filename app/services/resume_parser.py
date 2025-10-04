@@ -4,7 +4,7 @@ import re
 import json
 import os
 
-nlp = spacy.load("en_core_web_lg")
+nlp = spacy.load("en_core_web_sm")
 
 
 def load_skills_from_json(file_path):

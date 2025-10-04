@@ -26,7 +26,7 @@ python-docx
 spacy~=3.8.7
 torch~=2.8.0
 sentence-transformers~=5.1.1
-torch
+torch --extra-index-url https://download.pytorch.org/whl/cpu
 pinecone-client~=6.0.0
 google-generativeai
 
